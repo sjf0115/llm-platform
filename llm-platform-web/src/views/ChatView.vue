@@ -3,7 +3,7 @@
     <!-- 左侧边栏 -->
     <aside class="sidebar" :class="{ collapsed: isSidebarCollapsed }">
       <div class="sidebar-header">
-        <div class="logo">
+        <div class="logo" @click="startNewChat" style="cursor: pointer;">
           <span class="logo-icon">🤖</span>
           <span class="logo-text" v-show="!isSidebarCollapsed">通义千问</span>
         </div>
@@ -22,7 +22,7 @@
           type="primary" 
           class="new-chat-btn"
           :class="{ collapsed: isSidebarCollapsed }"
-          @click="createNewConversation"
+          @click="startNewChat"
         >
           <el-icon><Plus /></el-icon>
           <span v-show="!isSidebarCollapsed">开启新对话</span>
@@ -118,6 +118,7 @@
         <div v-if="messages.length === 0" class="welcome-section">
           <div class="welcome-icon">🤖</div>
           <h2 class="welcome-text">今天有什么可以帮到你？</h2>
+          <p class="welcome-subtext">输入消息开始新对话</p>
         </div>
 
         <!-- 消息列表 -->
@@ -293,6 +294,13 @@ const isWithinWeek = (dateStr: string) => {
 const createNewConversation = async () => {
   const conversation = await chatStore.createConversation('新对话')
   router.push(`/chat/${conversation.id}`)
+}
+
+// 开启新对话（不创建会话，只清空当前状态）
+const startNewChat = () => {
+  chatStore.currentConversationId = null
+  chatStore.messages = []
+  router.push('/chat')
 }
 
 const selectConversation = (id: number) => {
@@ -619,6 +627,12 @@ onMounted(async () => {
   font-weight: 500;
   color: #1a1a1a;
   letter-spacing: -0.3px;
+}
+
+.welcome-subtext {
+  font-size: 14px;
+  color: #9ca3af;
+  margin-top: 8px;
 }
 
 .messages-list {

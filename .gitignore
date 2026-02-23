@@ -1,0 +1,55 @@
+HELP.md
+data-explorer-server/target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+.git
+.svn
+.hg
+.zip
+.gz
+.DS_Store
+.target
+.idea/
+target/
+.nbproject
+*.tgz
+.*.swp
+.vim
+.tmp
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+.vite/
+.qoder/
+
+llm-platform-web/.vscode
+llm-platform-web/node/*
+llm-platform-web/node_modules/*
+llm-platform-web/dist/*
+llm-platform-web/**/*.proxy.js
